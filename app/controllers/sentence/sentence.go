@@ -6,6 +6,7 @@ import (
 	"strings"
 	"github.com/mlinuxgada/gophertranslator/app"
 	"github.com/mlinuxgada/gophertranslator/app/services/gophertranslator"
+	"github.com/mlinuxgada/gophertranslator/app/services/history"
 )
 
 // Request - word request struct
@@ -35,8 +36,6 @@ func Translate(resp http.ResponseWriter, req *http.Request) {
 	rawSentence := data.EnglishSentence
 	punctChar := ""
 
-	// Assume that every sentence ends with dot, question or exclamation mark.
-	// but check it
 	if strings.ContainsAny(data.EnglishSentence, ".?!") {
 
 		punctChar = string(data.EnglishSentence[len(data.EnglishSentence) - 1])
@@ -69,6 +68,8 @@ func Translate(resp http.ResponseWriter, req *http.Request) {
 	wordResponse := Response{
 		GopherSentence: gSentence,
 	}
+
+	history.Add(data.EnglishSentence, gSentence)
 
 	app.Render(resp, wordResponse)
 }

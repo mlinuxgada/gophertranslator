@@ -5,6 +5,7 @@ import (
 	"encoding/json"
 	"github.com/mlinuxgada/gophertranslator/app"
 	"github.com/mlinuxgada/gophertranslator/app/services/gophertranslator"
+	"github.com/mlinuxgada/gophertranslator/app/services/history"
 )
 
 // Request - word request struct
@@ -41,6 +42,8 @@ func Translate(resp http.ResponseWriter, req *http.Request) {
 	wordResponse := Response{
 		GopherWord: gopherWord,
 	}
+
+	history.Add(data.EnglishWord, gopherWord)
 
 	app.Render(resp, wordResponse)
 }

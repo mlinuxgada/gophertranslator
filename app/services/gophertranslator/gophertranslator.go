@@ -10,7 +10,7 @@ import (
 func TranslateWord(word string) (string, error) {
 
 	if len(word) == 0 {
-		return word, errors.New("Given word is empty string")
+		return word, errors.New("Given word/sentence is empty string")
 	}
 
 	gWord, match := ProcessWithPrefixG(word)

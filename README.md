@@ -60,18 +60,7 @@ response body:
 ```json
 {
     "status": 422,
-    "detail": "Given word is empty string"
-}
-```
-
-#### 
-}
-
-
-```json
-{
-    "status": 422,
-    "detail": "Given word is empty string"
+    "detail": "Given word/sentence is empty string"
 }
 ```
 
@@ -114,7 +103,7 @@ response body:
 ```json
 {
     "status": 422,
-    "detail": "Given word is empty string"
+    "detail": "Given word/sentence is empty string"
 }
 ```
 
